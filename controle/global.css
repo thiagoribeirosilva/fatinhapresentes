@@ -1,0 +1,8 @@
+:root {
+  --roxo_lavanda: rgba(171, 104, 199, 1);
+  --indigo: rgba(80, 11, 141, 1);
+  --azul_ardosia: rgba(25, 100, 126, 1);
+  --cor_fundo_tema_claro: var(--roxo_lavanda);
+  --cor_fundo_tema_escuro: var(--indigo);
+  --cor_destaque: var(--azul_ardosia);
+}
