@@ -734,7 +734,7 @@ async function inicializar() {
     if (elementoDialogo?.nodeType !== 1) {
       throw "elemento da caixa de diálogo não encontrado"
     }
-    elementoDialogo.classList.add("centralizado")
+    elementoDialogo.classList.add("centralizado","permanente")
     elementoDialogo.hidden = false
 
     const elementoFormularioAutenticacao = document.createElement("form")
@@ -767,6 +767,7 @@ async function inicializar() {
 
       elementoPelicula.hidden = true
       elementoDialogo.hidden = true
+      elementoDialogo.classList.remove("centralizado","permanente")
       elementoDialogo.replaceChildren("")
       resolver(true)
       elementoCampoSenha.value = ""
@@ -787,12 +788,13 @@ async function inicializar() {
     const elementoCampoDeTextoSenha = document.createElement("input")
     elementoCampoDeTextoSenha.id = idCampoSenha
     elementoCampoDeTextoSenha.setAttribute("type", "text")
+    elementoCampoDeTextoSenha.setAttribute("placeholder", "dica: Thiago")
     elementoCampoSenha.append(elementoCampoDeTextoSenha)
     // etiqueta
     const elementoCaixaMostrarSenha = document.createElement("input")
     elementoCaixaMostrarSenha.type = "checkbox"
-    elementoCaixaMostrarSenha.selected = false
-    elementoCaixaMostrarSenha.addEventListener("onchange", function alternarVisibilidadeSenha(evento = null) {
+    elementoCaixaMostrarSenha.checked = true
+    elementoCaixaMostrarSenha.addEventListener("change", function alternarVisibilidadeSenha(evento = null) {
       if (evento === null) {
         return
       }
@@ -812,10 +814,20 @@ async function inicializar() {
     const elementoBotaoConfirmar = document.createElement("button")
     elementoBotaoConfirmar.type = "submit"
     elementoBotaoConfirmar.textContent = "CONFIRMAR"
-    elementoCampoSenha.append(elementoBotaoConfirmar)
+    elementoFormularioAutenticacao.append(elementoBotaoConfirmar)
 
     const elementoBotaoFechar = document.createElement("button")
     elementoBotaoFechar.id = "fechar_dialogo"
+    elementoBotaoFechar.type = "button"
+    elementoBotaoFechar.innerHTML = "<svg viewBox=\"0 0 24 24\"" + " " +
+      "width=\"20\"" + " " +
+      "height=\"20\"" + " " +
+      "fill=\"none\"" + " " +
+      "stroke=\"currentColor\"" + " " +
+      "stroke-width=\"2\"" + " " +
+      "stroke-linecap=\"round\"" + " " +
+      "stroke-linejoin=\"round\"" + " " +
+    "><path = d=\"M18 6 6 18M6 6l12 12\"/></svg>"
     elementoBotaoFechar.addEventListener("click", function fecharDialogo(evento = null) {
       if (evento === null) {
         return
@@ -836,8 +848,8 @@ async function inicializar() {
     if (typeof evento !== "object") {
       throw "evento do navegador inválido ou ausente" + " - " + JSON.stringify({ evento })
     }
-   adicionarClienteVazio()
-   await renderizarConteinerClientes()
+    adicionarClienteVazio()
+    await renderizarConteinerClientes()
   })
 }
 

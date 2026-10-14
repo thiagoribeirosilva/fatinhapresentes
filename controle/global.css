@@ -6,3 +6,145 @@
   --cor_fundo_tema_escuro: var(--indigo);
   --cor_destaque: var(--azul_ardosia);
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--cor_fundo_tema_claro);
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: var(--cor_fundo_tema_escuro);
+    color: white;
+  }
+}
+
+h1,
+h1 + p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+body div.clientes {
+  margin: 20px, auto, 10px, auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: columns;
+  align-items: center;
+  justifiy-content: center;
+}
+
+body div.clientes div.cliente {
+}
+
+button {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+footer {
+  postion: absolute;
+  margin: 0px auto 0px auto;
+}
+
+footer p {
+}
+
+footer p strong {
+}
+
+footer p a {
+}
+
+
+#pelicula {
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+}
+
+#dialogo {
+  background-color: var(--cor_destaque);
+  padding: 30px 40px 20px 40px;
+  border-radius: 16px;
+}
+
+.centralizado {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form#autenticacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form .campo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form .campo input {
+  max-width: 8em;
+}
+
+/* ícone de olho para o botão mostrar senha*/
+form .campo.senha input[type=checkbox] {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 4em - 26px);
+  transform: translate(0, -5%);
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: none;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='2' d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z'/%3E%3Ccircle cx='12' cy='12' r='3' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+  color: var(--cor_destaque);
+}
+
+form .campo.senha input[type="checkbox"]:checked {
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='2' d='M3 3l18 18M10.6 5.1A11 11 0 0 1 22 12s-1.4 2.6-4.3 4.6M6.3 6.3C3.5 8.1 2 12 2 12s4 7 10 7c1.5 0 2.9-.4 4.1-1'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+
+form button[type=submit] {
+  padding: 5px 10px 5px 10px;
+  margin-top: 20px;
+}
+
+#fechar_dialogo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  margin: 0;
+  width: 28px;
+  height: 28px;
+}
+
+#fechar_dialogo svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#dialogo.permanente #fechar_dialogo {
+  display: none;
+}
